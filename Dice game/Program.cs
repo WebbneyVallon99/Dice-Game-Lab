@@ -31,6 +31,7 @@
 
 
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 public class Dice
 {
@@ -83,16 +84,24 @@ public class DiceGame()
         Console.WriteLine(dice2.TopSide);
 
         //test case #3, dice object with a non-positive number of sides
-         Dice dice3 = new Dice(-1);
+        Dice dice3 = new Dice(-1);
         dice3.roll();
         Console.WriteLine("\nrolling dice for case 3");
         Console.WriteLine(dice3.TopSide);
 
-
-
-
-
-        //test case #4,
+        // Test case #4 check the stop side and ensure it's within the limits of the dice 
+        Dice dice4 = new Dice(55);
+        dice4.roll();
+        if (dice4.TopSide <= 55 && dice4.TopSide >= 1)
+        {
+            Console.WriteLine("\nTest case 4 has passed");
+            Console.WriteLine(dice4.TopSide);
+        }
+        else
+        {
+            Console.WriteLine("\nTest case 4 has failed");
+            Console.WriteLine(dice4.TopSide);
+        }
     }
 
 
