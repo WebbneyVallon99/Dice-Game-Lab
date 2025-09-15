@@ -115,7 +115,7 @@ public class CeeloGame()
     {
 
 
-        // creates player one's dice and rolls them, and stores the results in an array
+        //creates player one's dice and rolls them, and stores the results in an array
         Dice p1Dice = new Dice();
         int[] p1DiceRolls = new int[3];
 
@@ -130,7 +130,7 @@ public class CeeloGame()
             Console.WriteLine($"Player one's dice {v + 1} rolled {p1DiceRolls[v]}\n");
         }
 
-        // checks If player 1's dice rolls meet the critiria for a point, and auto loss or auto win.
+        //checks If player 1's dice rolls meet the critiria for a point, and auto loss or auto win.
         int firstPlayPoints = 0;
         int[] autoWin = { 4, 5, 6 };
         int[] autoLoss = { 1, 2, 3 };
@@ -162,25 +162,53 @@ public class CeeloGame()
         }
 
         Console.WriteLine($"player 1 has {firstPlayPoints} points!");
-        
-        
-
 
 
         // creates player one's dice and rolls them, and stores the results in an array
-        // Dice p2Dice = new Dice();
-        // int[] p2DiceRolls = new int[3];
+        Dice p2Dice = new Dice();
+        int[] p2DiceRolls = new int[3];
 
-        // for (int i = 0; i < 3; i++)
-        // {
-        //     p2Dice.roll();
-        //     p2DiceRolls[i] = p2Dice.TopSide;
-        // }
+        for (int i = 0; i < 3; i++)
+        {
+            p2Dice.roll();
+            p2DiceRolls[i] = p2Dice.TopSide;
+        }
 
-        // for (int j = 0; j < 3; j++)
-        // {
-        //     Console.WriteLine($"Player two's dice {j + 1} rolled {p2DiceRolls[j]}\n");
-        // }
+        for (int j = 0; j < 3; j++)
+        {
+            Console.WriteLine($"Player two's dice {j + 1} rolled {p2DiceRolls[j]}\n");
+        }
+        
+        // checks If player 2's dice rolls meet the critiria for a point, and auto loss or auto win.
+        int secondPlayPoints = 0;
+        
+        bool player2AutoWin = autoWin.All(num => p2DiceRolls.Contains(num));
+
+        bool player2AutoLose = autoLoss.All(num => p2DiceRolls.Contains(num));
+
+
+        if (player2AutoLose == false && player2AutoWin == false)
+        {
+
+            if (p2DiceRolls[0] == p2DiceRolls[1] || p2DiceRolls[0] == p2DiceRolls[2])
+            {
+                Console.WriteLine("player 1 scored a point!");
+                secondPlayPoints++;
+            }
+            else if (p2DiceRolls[1] == p2DiceRolls[0] || p2DiceRolls[1] == p2DiceRolls[2])
+            {
+                Console.WriteLine("player 1 scored a point!");
+                secondPlayPoints++;
+            }
+            else if (p2DiceRolls[2] == p2DiceRolls[0] || p2DiceRolls[2] == p2DiceRolls[1])
+            {
+                Console.WriteLine("player 1 scored a point!");
+                secondPlayPoints++;
+            }
+
+        }
+
+        Console.WriteLine($"player 2 has {secondPlayPoints} points!");
 
 
 
