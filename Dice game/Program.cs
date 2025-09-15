@@ -66,43 +66,67 @@ public class Dice
     public int TopSide {get { return topSide;}}
 }
 
-public class DiceGame()
+// public class DiceGame()
+// {
+//     public static void Main()
+//     {
+//         // test case #1, dice object with a default constructor
+//         Dice dice1 = new Dice();
+//         dice1.roll();
+//         Console.WriteLine("rolling dice for case 1");
+//         Console.WriteLine(dice1.TopSide);
+
+
+//         //test case #2, dice object with a positive number of sides 
+//         Dice dice2 = new Dice(20);
+//         dice2.roll();
+//         Console.WriteLine("\nrolling dice for case 2");
+//         Console.WriteLine(dice2.TopSide);
+
+//         //test case #3, dice object with a non-positive number of sides
+//         Dice dice3 = new Dice(-1);
+//         dice3.roll();
+//         Console.WriteLine("\nrolling dice for case 3");
+//         Console.WriteLine(dice3.TopSide);
+
+//         // Test case #4 check the stop side and ensure it's within the limits of the dice 
+//         Dice dice4 = new Dice(55);
+//         dice4.roll();
+//         if (dice4.TopSide <= 55 && dice4.TopSide >= 1)
+//         {
+//             Console.WriteLine("\nTest case 4 has passed");
+//             Console.WriteLine(dice4.TopSide);
+//         }
+//         else
+//         {
+//             Console.WriteLine("\nTest case 4 has failed");
+//             Console.WriteLine(dice4.TopSide);
+//         }
+//     }
+
+
+// }
+
+public class CeeloGame()
 {
     public static void Main()
     {
-        // test case #1, dice object with a default constructor
-        Dice dice1 = new Dice();
-        dice1.roll();
-        Console.WriteLine("rolling dice for case 1");
-        Console.WriteLine(dice1.TopSide);
 
+        Dice p1Dice1 = new Dice();
+        int[] p1DiceRolls = new int[3];
 
-        //test case #2, dice object with a positive number of sides 
-        Dice dice2 = new Dice(20);
-        dice2.roll();
-        Console.WriteLine("\nrolling dice for case 2");
-        Console.WriteLine(dice2.TopSide);
-
-        //test case #3, dice object with a non-positive number of sides
-        Dice dice3 = new Dice(-1);
-        dice3.roll();
-        Console.WriteLine("\nrolling dice for case 3");
-        Console.WriteLine(dice3.TopSide);
-
-        // Test case #4 check the stop side and ensure it's within the limits of the dice 
-        Dice dice4 = new Dice(55);
-        dice4.roll();
-        if (dice4.TopSide <= 55 && dice4.TopSide >= 1)
+        for (int w = 0; w < 3; w++)
         {
-            Console.WriteLine("\nTest case 4 has passed");
-            Console.WriteLine(dice4.TopSide);
-        }
-        else
+            p1Dice1.roll();
+            p1DiceRolls[w] = p1Dice1.TopSide;
+        }    
+
+         for (int v = 0; v < 3; v++)
         {
-            Console.WriteLine("\nTest case 4 has failed");
-            Console.WriteLine(dice4.TopSide);
-        }
+            Console.WriteLine(p1DiceRolls[v]);
+        }   
+        
+
+
     }
-
-
 }
