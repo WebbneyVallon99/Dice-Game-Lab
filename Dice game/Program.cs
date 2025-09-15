@@ -111,22 +111,35 @@ public class CeeloGame()
 {
     public static void Main()
     {
-
-        Dice p1Dice1 = new Dice();
+        // creates player one's dice and rolls them, and stores the results in an array
+        Dice p1Dice = new Dice();
         int[] p1DiceRolls = new int[3];
 
         for (int w = 0; w < 3; w++)
         {
-            p1Dice1.roll();
-            p1DiceRolls[w] = p1Dice1.TopSide;
-        }    
+            p1Dice.roll();
+            p1DiceRolls[w] = p1Dice.TopSide;
+        }
 
-         for (int v = 0; v < 3; v++)
+        for (int v = 0; v < 3; v++)
         {
-            Console.WriteLine(p1DiceRolls[v]);
+            Console.WriteLine($"Player one's dice {v+1} rolled {p1DiceRolls[v]}\n");
         }   
         
+        
+        // creates player one's dice and rolls them, and stores the results in an array
+        Dice p2Dice = new Dice();
+        int[] p2DiceRolls = new int[3];
 
+        for (int i = 0; i < 3; i++)
+        {
+            p2Dice.roll();
+            p2DiceRolls[i] = p2Dice.TopSide;
+        }    
 
+         for (int j = 0; j < 3; j++)
+        {
+           Console.WriteLine($"Player two's dice {j+1} rolled {p2DiceRolls[j]}\n");
+        }  
     }
 }
