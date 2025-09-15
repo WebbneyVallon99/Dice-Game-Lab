@@ -32,6 +32,8 @@
 
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Linq;
+using System.Drawing;
 
 public class Dice
 {
@@ -111,6 +113,8 @@ public class CeeloGame()
 {
     public static void Main()
     {
+
+
         // creates player one's dice and rolls them, and stores the results in an array
         Dice p1Dice = new Dice();
         int[] p1DiceRolls = new int[3];
@@ -123,23 +127,62 @@ public class CeeloGame()
 
         for (int v = 0; v < 3; v++)
         {
-            Console.WriteLine($"Player one's dice {v+1} rolled {p1DiceRolls[v]}\n");
-        }   
+            Console.WriteLine($"Player one's dice {v + 1} rolled {p1DiceRolls[v]}\n");
+        }
+
+        // checks If player 1's dice rolls meet the critiria for a point, and auto loss or auto win.
+        int firstPlayPoints = 0;
+        int[] autoWin = { 4, 5, 6 };
+        int[] autoLoss = { 1, 2, 3 };
+
+        bool player1AutoWin = autoWin.All(num => p1DiceRolls.Contains(num));
+
+        bool player1AutoLose = autoLoss.All(num => p1DiceRolls.Contains(num));
+
+
+        if (player1AutoLose == false && player1AutoWin == false)
+        {
+
+            if (p1DiceRolls[0] == p1DiceRolls[1] || p1DiceRolls[0] == p1DiceRolls[2])
+            {
+                Console.WriteLine("player 1 scored a point!");
+                firstPlayPoints++;
+            }
+            else if (p1DiceRolls[1] == p1DiceRolls[0] || p1DiceRolls[1] == p1DiceRolls[2])
+            {
+                Console.WriteLine("player 1 scored a point!");
+                firstPlayPoints++;
+            }
+            else if (p1DiceRolls[2] == p1DiceRolls[0] || p1DiceRolls[2] == p1DiceRolls[1])
+            {
+                Console.WriteLine("player 1 scored a point!");
+                firstPlayPoints++;
+            }
+
+        }
+
+        Console.WriteLine($"player 1 has {firstPlayPoints} points!");
         
         
+
+
+
         // creates player one's dice and rolls them, and stores the results in an array
-        Dice p2Dice = new Dice();
-        int[] p2DiceRolls = new int[3];
+        // Dice p2Dice = new Dice();
+        // int[] p2DiceRolls = new int[3];
 
-        for (int i = 0; i < 3; i++)
-        {
-            p2Dice.roll();
-            p2DiceRolls[i] = p2Dice.TopSide;
-        }    
+        // for (int i = 0; i < 3; i++)
+        // {
+        //     p2Dice.roll();
+        //     p2DiceRolls[i] = p2Dice.TopSide;
+        // }
 
-         for (int j = 0; j < 3; j++)
-        {
-           Console.WriteLine($"Player two's dice {j+1} rolled {p2DiceRolls[j]}\n");
-        }  
+        // for (int j = 0; j < 3; j++)
+        // {
+        //     Console.WriteLine($"Player two's dice {j + 1} rolled {p2DiceRolls[j]}\n");
+        // }
+
+
+
     }
 }
